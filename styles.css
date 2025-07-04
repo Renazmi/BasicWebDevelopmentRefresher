@@ -2046,7 +2046,7 @@ html {
   color: #000;
 }
 .resume-btn:active {
-  transform: scale(0.95);
+  transform: none;
 }
 .resume-btn i {
   font-size: 0.9rem;
