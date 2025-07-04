@@ -2029,7 +2029,7 @@ html {
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s, border 0.3s;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -2040,13 +2040,13 @@ html {
   overflow: hidden;
 }
 .resume-btn:hover {
-  transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(0, 255, 222, 0.3);
   background: linear-gradient(135deg, #00FFDE, #0ABAB5);
   color: #000;
 }
 .resume-btn:active {
-  transform: none;
+  transform: none !important;
+  box-shadow: 0 4px 12px rgba(0, 255, 222, 0.18);
 }
 .resume-btn i {
   font-size: 0.9rem;
@@ -2055,5 +2055,26 @@ html {
   .resume-btn {
     padding: 0.8rem 1.5rem;
     font-size: 0.9rem;
+  }
+}
+
+.resume-btn .ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple-effect 0.5s linear;
+  background: rgba(0, 255, 222, 0.35);
+  pointer-events: none;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  width: 100px;
+  height: 100px;
+  opacity: 1;
+}
+@keyframes ripple-effect {
+  to {
+    transform: scale(2.5);
+    opacity: 0;
   }
 }
