@@ -495,6 +495,37 @@ document.addEventListener('DOMContentLoaded', () => {
     initContactAnimations();
     setupInfiniteCarousels();
     setupProjectSlider();
+
+    // Force download for Resume button
+    const resumeBtn = document.getElementById('download-resume-btn');
+    if (resumeBtn) {
+        resumeBtn.addEventListener('click', function(e) {
+            // GSAP animation like comment post
+            gsap.from(resumeBtn, {
+                opacity: 0,
+                y: -20,
+                duration: 0.5,
+                ease: 'power2.out'
+            });
+            // Ripple effect (optional, can be removed if you want only GSAP)
+            const rect = resumeBtn.getBoundingClientRect();
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            ripple.style.left = (e.clientX - rect.left) + 'px';
+            ripple.style.top = (e.clientY - rect.top) + 'px';
+            ripple.style.width = ripple.style.height = Math.max(rect.width, rect.height) + 'px';
+            resumeBtn.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 500);
+            // Force download
+            e.preventDefault();
+            const link = document.createElement('a');
+            link.href = 'files/Lance Enri Diamzon.pdf';
+            link.setAttribute('download', 'Lance Enri Diamzon.pdf');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    }
 });
 
 // Function to create a new comment element
